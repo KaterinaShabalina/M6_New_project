@@ -25,35 +25,35 @@ describe('template spec', () => {
 
   })
 
-  it('verifies clickability of tabs of the main page', () => {
+  it('verifies clickability of the Hotel tab', () => {
     cy.get('.hotels').click()
     cy.get('[id="Filter_DestinationId"]').should("be.visible")
+  })
+  it('verifies clickability of Guides tab', () => {
 
     cy.get('.guides').click()
     cy.get('[id="Filter_DestinationId"]').should("be.visible")
-
-    cy.get('.js-list-tours').click()
-    cy.get('[id="Filter_DestinationId"]').should("be.visible")
-
-    cy.get('.attraction-link').click()
-    cy.get('[id="Filter_DestinationId"]').should("be.visible")
   })
 
-  it('verifies that buttons login and signup functioning', () => {
-  
-//cy.get('.mobile-menu > :nth-child(3) > :nth-child(1)').should("be.visible")
-//cy.get('.mobile-menu > :nth-child(3) > :nth-child(1)').should("have.text", "login")
+  it('verifies clickability of Tours tab', () => {
+    cy.get('.js-list-tours').click()
+    cy.get('[id="Filter_DestinationId"]').should("be.visible")
+  })
+  it('verifies clickability of Things to do', () => {
+    cy.get('.attraction-link').click()
+    cy.get('[id="itemsForms"]').should("be.visible")
+  })
 
-//cy.get('.mobile-menu > :nth-child(3) > :nth-child(2)').should("be.visible")
-//cy.get('.mobile-menu > :nth-child(3) > :nth-child(2)').should("have.text", "signup")
+  it('verifies that buttons login functioning', () => {
+    cy.get("#burger").click()
+    cy.get('a').contains('Login').click({force: true})
+    cy.url().should('eq', 'https://www.accesstravel.com/en-US/Account/Login')
+  })
 
-//cy.contains('login').should("be.visible")
-//cy.get('[type="login"]').should("be.visible")
-
-//cy.contains('signup').should("be.visible")
-
-//cy.get(':nth-child(3) > :nth-child(1) > a').invoke('attr', 'aria-hidden').should('eq', 'true')
-
+it('verifies that buttons signup functioning', () => { 
+  cy.get("#burger").click()
+  cy.get('a').contains('Signup').click({force: true})
+  cy.url().should('eq', 'https://www.accesstravel.com/en-US/Account/Register')
 })
 
 })
